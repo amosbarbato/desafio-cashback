@@ -66,7 +66,7 @@ async function calcular() {
       ['03', 'Valor final (base de cálculo)', fmt(d.valor_final), ''],
       ['04', 'Cashback base (5%)', fmt(d.cashback_base), ''],
     ];
-    if (d.vip) steps.push(['05', 'Bônus VIP (+10% sobre base)', '+ ' + fmt(d.cashback_bonus_vip), 'gold']);
+    if (d.vip) steps.push(['05', 'Bônus VIP (+10% sobre base)', '+ ' + fmt(d.bonus_vip), 'gold']);
     if (d.dobrado) steps.push([d.vip ? '06' : '05', 'Dobro — compra > R$500 (×2)', fmt(d.cashback_subtotal) + ' × 2', 'accent']);
     steps.push([String(steps.length + 1).padStart(2, '0'), 'CASHBACK FINAL', fmt(d.cashback_final), 'accent']);
 
