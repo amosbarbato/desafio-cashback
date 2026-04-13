@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cashback</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <div class="logo-pill">💸</div>
+        <div class="brand">
+          <h1>Cashback Calculator</h1>
+          <p>nology - programa de recompensas</p>
+        </div>
+      </header>
+
+      <!-- Form Card -->
+      <div class="card">
+        <div class="card-title">// Nova consulta</div>
+
+        <div class="toggle-group">
+          <button
+            class="toggle-btn active-regular"
+            id="btn-regular"
+            onclick="setTipo('regular')"
+          >
+            <span class="tb-icon">👤</span>
+            <span class="tb-label">Regular</span>
+            <span class="tb-sub">cashback padrão</span>
+          </button>
+          <button class="toggle-btn" id="btn-vip" onclick="setTipo('vip')">
+            <span class="tb-icon">👑</span>
+            <span class="tb-label">VIP</span>
+            <span class="tb-sub">+10% bônus</span>
+          </button>
+        </div>
+
+        <div class="field">
+          <label>Valor da Compra</label>
+          <div class="input-wrap">
+            <span class="input-prefix">R$</span>
+            <input
+              type="number"
+              id="valor"
+              placeholder="0,00"
+              min="0.01"
+              step="0.01"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Cupom de Desconto</label>
+          <div class="slider-row">
+            <input
+              type="range"
+              id="desconto-slider"
+              min="0"
+              max="90"
+              step="1"
+              value="0"
+              oninput="syncSlider(this.value)"
+            />
+            <span class="slider-val" id="desconto-label">0%</span>
+          </div>
+        </div>
+
+        <div class="error-msg" id="error-msg"></div>
+
+        <button class="btn-calcular" id="btn-calcular" onclick="calcular()">
+          Calcular Cashback
+        </button>
+      </div>
+
+      <!-- Resultado -->
+      <div class="card" id="resultado">
+        <div class="card-title">// Resultado</div>
+
+        <div class="cashback-hero">
+          <div class="cashback-label">Seu cashback</div>
+          <div class="cashback-value" id="res-valor">R$ 0,00</div>
+          <div id="badges"></div>
+        </div>
+
+        <div class="steps" id="steps"></div>
+      </div>
+
+      <!-- Histórico -->
+      <div class="card" id="historico-section">
+        <div class="hist-header">
+          <div class="card-title" style="margin-bottom: 0">
+            // Histórico do seu IP
+          </div>
+          <span class="hist-count" id="hist-count"></span>
+        </div>
+        <div class="hist-list" id="hist-list">
+          <div class="empty-state"><span>📋</span>Nenhuma consulta ainda.</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
