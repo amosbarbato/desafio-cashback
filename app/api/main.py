@@ -12,7 +12,10 @@ from datetime import datetime
 # DATABASE
 # ==============================
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./cashback.db")
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://")
 
 database = databases.Database(DATABASE_URL)
 metadata = sqlalchemy.MetaData()
